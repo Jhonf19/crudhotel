@@ -1,13 +1,8 @@
 <?php
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
 include("db.php");
 
 if (isset($_POST['guardar_habitacion'])) {
-  // echo "<pre>";
-  // print_r($_POST);
-  // echo "</pre>";
+
     $numero = $_POST['numero'];
     $precio = $_POST['precio'];
     $estado = 0;
@@ -24,15 +19,18 @@ if (isset($_POST['guardar_habitacion'])) {
     header("location:index.php");
   }
 }
+
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $es = $_GET['es'];
   if ($es==0) {
     $es=1;
     $x="Reservada";
+    $y="danger";
   }else {
     $es=0;
     $x="Habilitada";
+    $y="success";
   }
 
   $query = "UPDATE habitaciones SET estado='$es' WHERE id_habitacion=$id";
@@ -41,7 +39,7 @@ if (isset($_GET['id'])) {
       die("Upps");
   }else {
     $_SESSION['msg']="Habitacion ".$x;
-    $_SESSION['tmsg']="danger";
+    $_SESSION['tmsg']=$y;
     header("location:index.php");
   }
 

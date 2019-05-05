@@ -15,7 +15,7 @@ include("includes/header.php"); ?>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    <?php unset($_SESSION['msg']); endif ?>
+    <?php unset($_SESSION['msg'],$_SESSION['tmsg']); endif ?>
       <div class="card card-body">
         <form class="" action="ghab.php" method="post">
           <div class="form-group">
